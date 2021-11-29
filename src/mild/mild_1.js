@@ -43,8 +43,8 @@ export function maxAndMin(numbers) {
     var min = Math.min(...numbers);
     var max = Math.max(...numbers);
     return {
-        "min": min,
-        "max": max
+        "max": max,
+        "min": min
     };
 }
 
