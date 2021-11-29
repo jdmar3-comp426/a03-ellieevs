@@ -67,7 +67,7 @@ export function getStatistics(array) {
     var min = Math.min(...array);
     var max = Math.max(...array);
     var va = variance(array, mean);
-    var std = Math.sqrt(variance);
+    var std = Math.sqrt(va);
     return {
         'length': length,
         'sum': sum,

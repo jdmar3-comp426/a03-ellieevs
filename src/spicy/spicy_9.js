@@ -28,7 +28,7 @@ export const repeat = (fn, n, ...params) => {
  *   10 times.
  */
 export const repeatDemo = () => {
-    repeat((out) => console.log(out), 10, ["Hello, world!"]);
+    repeat((out) => console.log(out), 10, "Hello, world!");
 };
 
 
@@ -149,7 +149,15 @@ export const someEven = (arr, test) => {
  *       -->  { pass: [1, 5, 31], fail: [90] }
  */
 export const filter = (arr, test) => {
-
+    let pass = [], fail = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (test(arr[i])) {
+            pass[pass.length] = arr[i];
+        } else {
+            fail[fail.length] = arr[i];
+        }
+    }
+    return{'pass': pass, 'fail': fail}
 };
 
 
@@ -159,7 +167,8 @@ export const filter = (arr, test) => {
  *   odd numbers. Use the "everyEven" function in this function.
  */
 export const allEvensAreOdd = (arr) => {
-
+    let output = everyEven(arr, (a)=> a%2 ==  1);
+    return output;
 };
 
 
@@ -169,7 +178,8 @@ export const allEvensAreOdd = (arr) => {
  *   array is an odd number. Use the "someEven" function in this function.
  */
 export const anEvenIsOdd = (arr) => {
-
+    let output = someeven(arr, (a)=> a%2 ==  1);
+    return output;
 };
 
 
@@ -180,5 +190,10 @@ export const anEvenIsOdd = (arr) => {
  *   pass the test. You must use the filter function.
  */
 export const hasExactly = (arr, test, n) => {
-
+    let output = filter(arr, test);
+    if(output.pass.length == n) {
+        return true;
+    } else {
+        return false;
+    }
 };
