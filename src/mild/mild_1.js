@@ -43,8 +43,8 @@ export function maxAndMin(numbers) {
     var min = Math.min(...numbers);
     var max = Math.max(...numbers);
     return {
-        min: min,
-        max: max
+        "min": min,
+        "max": max
     };
 }
 
@@ -59,5 +59,18 @@ export function maxAndMin(numbers) {
  *
  */
 export function countArray(array) {
-
+    array.sort ((a, b) => a - b);
+    let value = [], freq = [], prev;
+    for(let i = 0; i < array.length; i++) {
+        if(array[i] == prev) {
+            freq[freq.length - 1] += 1;
+        } else {
+            value[value.length] = array[i];
+            freq[freq.length] = 1;
+        }
+        prev = array[i];
+    }
+    let result = {};
+    value.forEach((val, i) => result[val] = freq[i]);
+    return result;
 }
