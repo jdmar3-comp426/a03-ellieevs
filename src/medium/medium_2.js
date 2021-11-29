@@ -37,7 +37,7 @@ export function yearStats() {
 }
 
 export function getRatioH() {
-    let hybridCount = mpg_data.filter( (car) => car.hypbrid).length;
+    let hybridCount = mpg_data.filter( (car) => car.hybrid).length;
     let ratio = hybridCount / mpg_data.length;
     return ratio;
 }
