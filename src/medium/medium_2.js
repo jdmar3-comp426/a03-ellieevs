@@ -20,12 +20,27 @@ see under the methods section
  * @param {allCarStats.ratioHybrids} ratio of cars that are hybrids
  */
 export const allCarStats = {
-    avgMpg: undefined,
-    allYearStats: undefined,
-    ratioHybrids: undefined,
+    avgMpg: averageMPG(),
+    allYearStats: yearStats(),
+    ratioHybrids: getRatioH(),
 };
 
+export function averageMPG() {
+    return {
+        city: getStatistics(mpg_data.map((car) => car.city_mpg)).mean,
+        highway: getStatistics(mpg_data.map((car) => car.highway_mpg)).mean
+    }
+}
 
+export function yearStats() {
+    return getStatistics(mpg_data.map((car) => car.year));
+}
+
+export function getRatioH() {
+    let hybridCount = mpg_data.filter( (car) => car.hybrid).length;
+    let ratio = hybridCount / mpg_data.length;
+    return ratio;
+}
 /**
  * HINT: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
  *
